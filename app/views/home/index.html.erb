@@ -11,12 +11,3 @@
 <li>Favorite Genre: <%= @user.favorite_genre%></li>
 </ul>
 </div>
-<%= month_calendar do |date, events| %>
-  <%= date %>
-  <% events.each do |event|%>
-    <%= @user.birthday%>
-    <%= @user.firstname%>
-    <%end%>
-<% end %>
-
-
