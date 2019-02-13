@@ -6,4 +6,9 @@ class MoviesController < ApplicationController
         # @title = response.title
     end
     
+
+
+    def show
+
+    end
 end
