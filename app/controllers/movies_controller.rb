@@ -9,6 +9,6 @@ class MoviesController < ApplicationController
 
 
     def show
-
+        @respones = Respone.all
     end
 end
