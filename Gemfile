@@ -62,3 +62,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+
+gem 'simple_calendar', '~> 2.0'
+
+gem 'simple_form'
+
+gem 'bulma-rails', '~> 0.7.3'
