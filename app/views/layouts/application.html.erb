@@ -6,7 +6,7 @@
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <%# <link rel="stylesheet" type="text/css" media="screen" href="debug.css" /> %>
+    <link rel="stylesheet" type="text/css" media="screen" href="debug.css" />
     
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,6 +17,37 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
+
+
+
+    <nav>
+          <% if user_signed_in? %>
+            <div >
+            <ul >
+              <li><%= link_to "Home", root_url%>
+            </ul>
+        <%= form_tag(search_page_path, :method => "get") do %>  
+
+            <%= search_field_tag :movie_title, params[:movie_title], placeholder: "Search", class: "form-control" %>  
+
+              <%= button_tag "", :name => nil%>  
+              <% end %>
+      
+    <% else %>
+      <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+          <li><%= link_to "Home", root_url, class: 'uk-active'%>
+        </ul>
+        <div class="uk-navbar-right">
+          <ul class="uk-navbar-nav">
+          
+            <li><%= link_to "Sign up", new_user_registration_path, class: 'uk-active' %> </li> 
+            <li><%= link_to "Login", new_user_session_path, class: 'uk-active'  %> </li> 
+           </ul>
+        </div>
+      </div>
+    <%end%>
+    </nav>
 
     <p class="navbar-text pull-right">
       <% if user_signed_in? %>
