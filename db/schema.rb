@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_13_215949) do
+ActiveRecord::Schema.define(version: 2019_02_14_154457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2019_02_13_215949) do
     t.integer "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "movies_associations", force: :cascade do |t|
@@ -29,15 +31,6 @@ ActiveRecord::Schema.define(version: 2019_02_13_215949) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_movies_associations_on_user_id"
-  end
-
-  create_table "usercomments", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "comment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_usercomments_on_comment_id"
-    t.index ["user_id"], name: "index_usercomments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,6 +52,4 @@ ActiveRecord::Schema.define(version: 2019_02_13_215949) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "usercomments", "comments"
-  add_foreign_key "usercomments", "users"
 end

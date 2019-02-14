@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :usercomments
-  has_many :comments, :through => :usercomments
+  
+  has_many :comments
 end
