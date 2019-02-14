@@ -23,14 +23,14 @@ class MoviesController < ApplicationController
 
     def create
         @currentUser = current_user.id
-        @comment = Comment.create(
+        @comment = Comment.new(
             user_id: @currentUser,
-            movie_id: params[:movie_id],
+            movie_id: @movie_id,
             content: params[:content]
           )
 
           if @comment.save
-            redirect_to 'movies#index'
+            redirect_to 'movies#show'
           else
             render 'new'
           end

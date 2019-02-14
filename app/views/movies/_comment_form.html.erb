@@ -3,13 +3,13 @@
 <%= form_with model: @comment, local: true do |form|%>
 
 <p>
-<%= form.label :user_id%><br>
+
 <%= hidden_field_tag(:user_id, @currentUser) %>
 </p>
 
 <p>
 <%= form.label :movie_id%><br>
-<%= form.text_field :movie_id%>
+<%= hidden_field_tag(:movie_id, @movie_id) %>
 </p>
 
 
