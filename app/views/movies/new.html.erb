@@ -1,0 +1,25 @@
+
+
+<%= form_with model: @comment, local: true do |form|%>
+
+<p>
+<%= form.label :user_id%><br>
+<%= form.text_field :user_id%>
+</p>
+
+<p>
+<%= form.label :movie_id%><br>
+<%= form.text_field :movie_id%>
+</p>
+
+
+<p>
+<%= form.label :comment%><br>
+<%= form.text_field :comment%>
+</p>
+
+<p>
+<%=form.submit 'submit'%>
+</p>
+
+<%end%>
