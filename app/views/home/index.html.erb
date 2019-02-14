@@ -56,3 +56,21 @@
 
 
 
+
+<li>Age: <%= @user.age%></li>
+<li>Birthday: <%= @user.birthday%></li>
+<li>Favorite Movie: <%= @user.favorite_movie%></li>
+<li>Favorite Actor: <%= @user.favorite_actor%></li>
+<li>Favorite Genre: <%= @user.favorite_genre%></li>
+</ul>
+</div>
+
+<%= month_calendar do |date| %>
+  <%= date %>
+  <% date_string = date.to_s%>
+  <% birthday_string = @user.birthday.to_s%>
+  <% if date_string == birthday_string%>
+  <%= @user.firstname%>
+  <%end %>
+<% end %>
+
