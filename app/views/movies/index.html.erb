@@ -1,0 +1,10 @@
+<%= form_tag(movies_path, method: :get ) do  %>
+    <%= text_field_tag(:search, params[:search], :placeholder => "enter movie") %><%=  submit_tag ("Search"), :class => 'btn' %>
+<% end %>
+<li><%= @response["Poster"] %></li>
+<li><%= @response["Title"] %></li>
+<li><%= @response["Year"] %></li>
+<li><%= @response["Runtime"] %></li>
+<li><%= @response["Genre"] %></li>
+<li><%= @response["Actors"] %></li>
+<li><%= @response["Plot"] %></li>
