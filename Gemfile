@@ -68,5 +68,3 @@ gem 'simple_calendar', '~> 2.0'
 gem 'simple_form'
 
 gem 'bulma-rails', '~> 0.7.3'
-
-gem 'jquery-ui-rails'
