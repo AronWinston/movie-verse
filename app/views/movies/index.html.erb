@@ -9,11 +9,14 @@
 <li><%= @response["Actors"] %></li>
 <li><%= @response["Plot"] %></li>
 
-<%=@user.firstname%>
+
 
 <%= render partial: 'comment_form' %>
 
-<h2>Content</h2>
+<h2>Comments</h2>
+
 <%@comments.each do |comment|%>
-<%=comment.content%>
+<ul>
+<li><%=comment.content%></li>
+</ul>
 <%end%>

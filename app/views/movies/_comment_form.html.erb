@@ -4,7 +4,7 @@
 
 <p>
 <%= form.label :user_id%><br>
-<%= form.select :user_id, @user.firstname %>
+<%= hidden_field_tag(:user_id, @currentUser) %>
 </p>
 
 <p>
@@ -15,7 +15,7 @@
 
 <p>
 <%= form.label :comment%><br>
-<%= form.text_field :comment%>
+<%= form.text_field :content%>
 </p>
 
 <p>
