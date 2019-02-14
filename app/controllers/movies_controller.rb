@@ -4,6 +4,8 @@ class MoviesController < ApplicationController
     def index
         @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:search].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
         @comments = Comment.all
+        @user=current_user
+        @currentUser = current_user.id
     end
     
  
@@ -20,7 +22,8 @@ class MoviesController < ApplicationController
     end
 
     def create
-        @comment = Comment.create(
+        
+        @comment = Comment.new(
             user_id: params[:comment][:user_id],
             movie_id: params[:comment][:movie_id],
             content: params[:comment][:content]
