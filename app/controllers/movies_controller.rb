@@ -2,7 +2,9 @@ class MoviesController < ApplicationController
     require 'httparty'
     
     def index
-        @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:search].to_s + '&apikey=' ENV['MOVIEVERSE_API_KEY'])
+
+        @apikey = ENV["MOVIEVERSE_API_KEY"].gsub(/[\u201C\u201D]/, " ")
+        @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:search].to_s + "&apikey=#{ENV['MOVIEVERSE_API_KEY']}")
         
     end
     
