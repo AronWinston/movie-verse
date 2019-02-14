@@ -127,6 +127,10 @@ GEM
       httparty
       klass_param
     orm_adapter (0.5.0)
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2ffd15557fe69107ae683463f1afd6ea23041fa
     pg (1.1.4)
     public_suffix (3.0.3)
     puma (3.12.0)
