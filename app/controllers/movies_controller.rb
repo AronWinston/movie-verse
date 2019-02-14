@@ -10,15 +10,13 @@ class MoviesController < ApplicationController
     end
 
     def search
-        def search  
-            if params[:movie_title].blank?  
-              redirect_to(root_path, alert: "Empty field!") and return  
-            else  
-              @movietitle = params[:movie_title].downcase
-              @response = HTTParty.get('http://www.omdbapi.com/?t='+ @movietitle.to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+        if params[:movie_title].blank?  
+            redirect_to(root_path, alert: "Empty field!") and return  
+        else  
+            @movietitle = params[:movie_title].downcase
+            @response = HTTParty.get('http://www.omdbapi.com/?t='+ @movietitle.to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
   
-            end  
-          end
+        end 
     end
 
     def show
