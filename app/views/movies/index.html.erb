@@ -8,15 +8,20 @@
 <li><%= @response["Genre"] %></li>
 <li><%= @response["Actors"] %></li>
 <li><%= @response["Plot"] %></li>
+<li><%= @response["imdbID"] %></li>
+
 
 
 
 <%= render partial: 'comment_form' %>
 
+
 <h2>Comments</h2>
 
 <%@comments.each do |comment|%>
 <ul>
+<li><%=comment.user.firstname%></li>
 <li><%=comment.content%></li>
+
 </ul>
 <%end%>
