@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
+# gem 'httparty'
 
+gem 'omdb-api'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
@@ -67,4 +69,5 @@ gem 'simple_calendar', '~> 2.0'
 
 gem 'simple_form'
 
-gem 'bulma-rails', '~> 0.7.3'
+
+gem 'bulma-rails', '~> 0.7.4'

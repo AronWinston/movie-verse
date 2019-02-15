@@ -5,6 +5,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="debug.css" />
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -15,14 +18,45 @@
       <p class="alert"><%= alert %></p>
 
 
-    <p class="navbar-text pull-right">
+
+
+    <nav>
+          <% if user_signed_in? %>
+            <div >
+            <ul >
+              <li><%= link_to "Home", root_url%>
+            </ul>
+        <%= form_tag(search_page_path, :method => "get") do %>  
+
+            <%= search_field_tag :movie_title, params[:movie_title], placeholder: "Search", class: "form-control" %>  
+
+              <%= button_tag "", :name => nil%>  
+              <% end %>
+      
+    <% else %>
+      <div >
+        <ul>
+          <li><%= link_to "Home", root_url%>
+        </ul>
+        <div>
+          <ul>
+          
+            <li><%= link_to "Sign up", new_user_registration_path%> </li> 
+            <li><%= link_to "Login", new_user_session_path%> </li> 
+           </ul>
+        </div>
+      </div>
+    <%end%>
+    </nav>
+
+    <p >
       <% if user_signed_in? %>
       Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <%= link_to 'Edit profile', edit_user_registration_path %> |
+      <%= link_to "Logout", destroy_user_session_path, method: :delete  %>
       <% else %>
-      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+      <%= link_to "Sign up", new_user_registration_path  %> |
+      <%= link_to "Login", new_user_session_path  %>
     <% end %>
     </p>
 

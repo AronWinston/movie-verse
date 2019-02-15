@@ -15,6 +15,7 @@
 # gem 'pg'
 #
 default: &default
+  moviedb: <%= ENV["MOVIEVERSE_API_KEY"]%>
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
