@@ -2,13 +2,8 @@ class MoviesController < ApplicationController
     require 'httparty'
     
     def index
-<<<<<<< HEAD
         @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:search].to_s + "&apikey=#{ ENV['MOVIEVERSE_API_KEY'] }")
        
-=======
-        @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:search].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
-        @comments = Comment.all
->>>>>>> 25edb34c982147dac62b04352919c7dcf116a2bb
     end
      
  
