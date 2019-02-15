@@ -2,17 +2,36 @@ class MoviesController < ApplicationController
     require 'httparty'
     
     def index
+<<<<<<< HEAD
         @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:search].to_s + "&apikey=#{ ENV['MOVIEVERSE_API_KEY'] }")
        
     end
      
  
+=======
+        @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:search].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+        @comments = Comment.all
+        @user=current_user
+        @currentUser = current_user.id
+
+    end
+
+>>>>>>> master
     def search
-        @respones= Respone.all
+            if params[:movie_title].blank?  
+              redirect_to(root_path, alert: "Empty field!") and return  
+            else  
+              @movietitle = params[:movie_title].downcase
+              @response = HTTParty.get('http://www.omdbapi.com/?t='+ @movietitle.to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+  
+            end  
+          
     end
 
     def show
-        @comment=Comment.find_by(params[:movie_id])
+        @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:query].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+        @movie_id = @response[:imdbID]
+        @comment=Comment.find_by(params[@movie_id])
     end
 
     def new
@@ -20,14 +39,15 @@ class MoviesController < ApplicationController
     end
 
     def create
-        @comment = Comment.create(
-            user_id: params[:comment][:user_id],
-            movie_id: params[:comment][:movie_id],
-            content: params[:comment][:content]
+        @currentUser = current_user.id
+        @comment = Comment.new(
+            user_id: @currentUser,
+            movie_id: @movie_id,
+            content: params[:content]
           )
 
           if @comment.save
-            redirect_to @comment
+            redirect_to 'movies#show'
           else
             render 'new'
           end
@@ -42,4 +62,9 @@ class MoviesController < ApplicationController
 
     def destroy
     end
+
+    private
+    def search_params
+        params.require(:movie).permit(:movie)
+      end
 end
