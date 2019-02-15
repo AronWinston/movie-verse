@@ -1,8 +1,26 @@
-<div>
+<div><!-- Movie Poster & detail section -->
+<li>
+<img src="<%= @response["Poster"] %>"></li>
 Title:<li><%= @response["Title"] %></li>
 Year: <li><%= @response["Year"] %></li>
 Runtime: <li><%= @response["Runtime"] %></li>
 Genre: <li><%= @response["Genre"] %></li>
 Actors: <li><%= @response["Actors"] %></li>
 Plot: <li><%= @response["Plot"] %></li>
+</div>
+
+
+
+<%= render partial: 'comment_form' %>
+
+<div> <!-- Comments section --> 
+<h2>Comments</h2>
+
+<%@comments.each do |comment|%>
+<ul>
+<li><%=comment.user.firstname%></li>
+<li><%=comment.content%></li>
+
+</ul>
+<%end%>
 </div>
