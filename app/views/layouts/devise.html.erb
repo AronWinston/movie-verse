@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MovieVerse</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    
+    
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <section class="hero is-fullheight">
+    <div class="section">
+      <div class="section-body">
+        <div class="columns">
+          <div class="column is-half is-offset-one-quarter">
+            <div class="has-text-centered">
+              <h1 class="title is-4">
+                MovieVerse
+                  <div class="card">
+                    <div class="card-content">
+                      <%= yield %>
+                    </div>
+                  </div>
+              </h1>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+  </body>
+</html>
