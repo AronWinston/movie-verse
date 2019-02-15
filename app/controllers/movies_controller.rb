@@ -2,10 +2,10 @@ class MoviesController < ApplicationController
     require 'httparty'
     
     def index
-        @movietitle = if params[:movie]
-            @response = HTTParty.get('http://www.omdbapi.com/?t='+ @movietitle.to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
-            
-        end
+        @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:search].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+        @comments = Comment.all
+        @user=current_user
+        @currentUser = current_user.id
 
     end
 
@@ -31,14 +31,15 @@ class MoviesController < ApplicationController
     end
 
     def create
-        @comment = Comment.create(
-            user_id: params[:comment][:user_id],
-            movie_id: params[:comment][:movie_id],
-            content: params[:comment][:content]
+        @currentUser = current_user.id
+        @comment = Comment.new(
+            user_id: @currentUser,
+            movie_id: @movie_id,
+            content: params[:content]
           )
 
           if @comment.save
-            redirect_to @comment
+            redirect_to 'movies#show'
           else
             render 'new'
           end
