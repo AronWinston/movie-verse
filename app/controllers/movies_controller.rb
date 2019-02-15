@@ -2,13 +2,6 @@ class MoviesController < ApplicationController
     require 'httparty'
     
     def index
-<<<<<<< HEAD
-        @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:search].to_s + "&apikey=#{ ENV['MOVIEVERSE_API_KEY'] }")
-       
-    end
-     
- 
-=======
         @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:search].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
         @comments = Comment.all
         @user=current_user
@@ -16,7 +9,6 @@ class MoviesController < ApplicationController
 
     end
 
->>>>>>> master
     def search
             if params[:movie_title].blank?  
               redirect_to(root_path, alert: "Empty field!") and return  
