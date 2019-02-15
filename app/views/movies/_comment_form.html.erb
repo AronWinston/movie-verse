@@ -1,6 +1,6 @@
 
-
-<%= form_with model: @comment, local: true do |form|%>
+<br>
+<%= form_with model: @newcomment, local: true, url: '/create_comment' do |form|%>
 
 <p>
 
@@ -8,18 +8,18 @@
 </p>
 
 <p>
-<%= form.label :movie_id%><br>
+
 <%= hidden_field_tag(:movie_id, @movie_id) %>
 </p>
 
 
 <p>
-<%= form.label :comment%><br>
-<%= form.text_field :content%>
+<%= form.label :comments%><br>
+<%= form.text_field (:content)%>
 </p>
 
 <p>
-<%=form.submit 'submit'%>
+<%=form.submit 'submit' %>
 </p>
 
 <%end%>

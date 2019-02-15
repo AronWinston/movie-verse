@@ -6,7 +6,25 @@ class MoviesController < ApplicationController
         @comments = Comment.all
         @user=current_user
         @currentUser = current_user.id
+    end
 
+    def new
+        @newcomment = Comment.new
+    end
+
+    def create_comment
+        @currentUser = current_user.id
+        @comments = Comment.where(movie_id: @movie_id)
+        @movie_id = params[:movie_id]
+        
+
+        
+               @newcomment = Comment.create(
+                user_id: @currentUser,
+                movie_id: @movie_id,
+                content: params[:content]
+            )
+            redirect_to request.referrer
     end
 
     def show
@@ -18,43 +36,11 @@ class MoviesController < ApplicationController
             @currentUser = current_user.id
             @movie_id = @response["imdbID"]
             @comments = Comment.where(movie_id: @movie_id)
-            @newcomment = Comment.new(
-                user_id: @currentUser,
-                movie_id: @movie_id,
-                content: params[:content]
-            )
+           
+        end      
+    end 
+
     
-        end  
-
-          
-    end
-
-    # def show
-    #     @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:query].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
-    #     @movie_id = @response[:imdbID]
-    #     @comment=Comment.find_by(params[@movie_id])
-    # end
-
-    def new
-        @comment = Comment.new
-    end
-
-    def create
-        @currentUser = current_user.id
-        @comment = Comment.new(
-            user_id: @currentUser,
-            movie_id: @movie_id,
-            content: params[:content]
-          )
-
-          if @comment.save
-            redirect_to 'movies#show'
-          else
-            render 'new'
-          end
-        
-    end
-
     def edit
     end
 
