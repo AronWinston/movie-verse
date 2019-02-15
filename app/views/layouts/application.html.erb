@@ -26,7 +26,7 @@
             <ul >
               <li><%= link_to "Home", root_url%>
             </ul>
-        <%= form_tag(search_page_path, :method => "get") do %>  
+        <%= form_tag(show_path, :method => "get") do %>  
 
             <%= search_field_tag :movie_title, params[:movie_title], placeholder: "Search", class: "form-control" %>  
 

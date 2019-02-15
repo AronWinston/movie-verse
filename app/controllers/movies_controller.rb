@@ -9,22 +9,30 @@ class MoviesController < ApplicationController
 
     end
 
-    def search
-            if params[:movie_title].blank?  
-              redirect_to(root_path, alert: "Empty field!") and return  
-            else  
-              @movietitle = params[:movie_title].downcase
-              @response = HTTParty.get('http://www.omdbapi.com/?t='+ @movietitle.to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
-  
-            end  
+    def show
+        if params[:movie_title].blank?  
+            redirect_to(root_path, alert: "Empty field!") and return  
+        else  
+            @movietitle = params[:movie_title].downcase
+            @response = HTTParty.get('http://www.omdbapi.com/?t='+ @movietitle.to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+        end  
+        @currentUser = current_user.id
+        @movie_id = @response[:imdbID]
+        @comments = Comment.where(movie_id: @movie_id)
+        @newcomment = Comment.new(
+            user_id: @currentUser,
+            movie_id: @movie_id,
+            content: params[:content]
+        )
+
           
     end
 
-    def show
-        @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:query].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
-        @movie_id = @response[:imdbID]
-        @comment=Comment.find_by(params[@movie_id])
-    end
+    # def show
+    #     @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:query].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+    #     @movie_id = @response[:imdbID]
+    #     @comment=Comment.find_by(params[@movie_id])
+    # end
 
     def new
         @comment = Comment.new
