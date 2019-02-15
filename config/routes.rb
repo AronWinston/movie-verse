@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get '/movies/:id' => 'movies#show', as: 'show_page'
   get 'show' => 'movies#show', as: 'show'
 
+  post '/create_comment', to: 'movies#create_comment'
   resources :movies
+
+  resources :comments
   devise_for :users, :controllers => { registrations: 'registrations' }
   root to: "home#index"
 end
