@@ -6,15 +6,24 @@ class MoviesController < ApplicationController
         @comments = Comment.all
         @user=current_user
         @currentUser = current_user.id
+
     end
-    
- 
+
     def search
-        @respones= Respone.all
+            if params[:movie_title].blank?  
+              redirect_to(root_path, alert: "Empty field!") and return  
+            else  
+              @movietitle = params[:movie_title].downcase
+              @response = HTTParty.get('http://www.omdbapi.com/?t='+ @movietitle.to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+  
+            end  
+          
     end
 
     def show
-        @comment=Comment.find_by(params[:movie_id])
+        @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:query].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+        @movie_id = @response[:imdbID]
+        @comment=Comment.find_by(params[@movie_id])
     end
 
     def new
@@ -45,4 +54,9 @@ class MoviesController < ApplicationController
 
     def destroy
     end
+
+    private
+    def search_params
+        params.require(:movie).permit(:movie)
+      end
 end
