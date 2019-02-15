@@ -1,0 +1,25 @@
+
+
+<%= form_with model: @comment, local: true do |form|%>
+
+<p>
+
+<%= hidden_field_tag(:user_id, @currentUser) %>
+</p>
+
+<p>
+<%= form.label :movie_id%><br>
+<%= hidden_field_tag(:movie_id, @movie_id) %>
+</p>
+
+
+<p>
+<%= form.label :comment%><br>
+<%= form.text_field :content%>
+</p>
+
+<p>
+<%=form.submit 'submit'%>
+</p>
+
+<%end%>
