@@ -47,16 +47,32 @@
 
 
 
-
-
+<% @movies.each do |movie|%>
+<%= movie.setdate.to_s%>
+<%end%>
 
 
 <%= month_calendar do |date| %>
   <%= date %>
   <% date_string = date.to_s%>
   <% birthday_string = @user.birthday.to_s%>
-  <% if date_string == birthday_string%>
-  <%= @user.firstname%>
-  <%end %>
+  <%@movies.each do |movie| %>
+    <% setdate_string = movie.setdate%>
+    <% if date_string == setdate_string%>
+    <%= @user.firstname%>
+    <%= @response["title"]%>
+    <%end%>
+  <%end%>
 <% end %>
 
+<%= month_calendar do |date| %>
+  <%= date%>
+  <% date_string = date.to_s%>
+  <% @movies.each do |movie|%>
+  <% setdate_string = movie.setdate.to_s%>
+  <% if date_string == setdate_string%>
+    <%= movie.movietitle%>
+    <img src="<%=movie.movieposter%>">
+  <%end%>
+<%end%>
+<%end%>

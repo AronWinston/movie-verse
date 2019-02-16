@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_15_165456) do
+ActiveRecord::Schema.define(version: 2019_02_16_201015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 2019_02_15_165456) do
   create_table "movies", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "movie_id"
+    t.bigint "comment_id"
+    t.bigint "user_id"
+    t.date "setdate"
+    t.string "movietitle"
+    t.string "movieposter"
+    t.index ["comment_id"], name: "index_movies_on_comment_id"
+    t.index ["user_id"], name: "index_movies_on_user_id"
   end
 
   create_table "movies_associations", force: :cascade do |t|
@@ -53,7 +61,9 @@ ActiveRecord::Schema.define(version: 2019_02_15_165456) do
     t.string "favorite_movie"
     t.string "favorite_actor"
     t.string "favorite_genre"
+    t.bigint "movie_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["movie_id"], name: "index_users_on_movie_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

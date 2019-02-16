@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'show' => 'movies#show', as: 'show'
 
   post '/create_comment', to: 'movies#create_comment'
+  post '/add_movie', to: 'movies#add_movie'
   resources :movies
 
   resources :comments

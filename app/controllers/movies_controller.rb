@@ -6,6 +6,8 @@ class MoviesController < ApplicationController
         @comments = Comment.all
         @user=current_user
         @currentUser = current_user.id
+        @movies = Movie.where(movie_id: params[:movie_id])
+        
     end
 
     def new
@@ -16,16 +18,29 @@ class MoviesController < ApplicationController
         @currentUser = current_user.id
         @comments = Comment.where(movie_id: @movie_id)
         @movie_id = params[:movie_id]
-        
-
-        
-               @newcomment = Comment.create(
-                user_id: @currentUser,
-                movie_id: @movie_id,
-                content: params[:content]
-            )
+        @newcomment = Comment.create(
+            user_id: @currentUser,
+            movie_id: @movie_id,
+            content: params[:content]
+        )
             redirect_to request.referrer
     end
+
+    def add_movie
+        @currentUser = current_user.id
+        @movie_id = params[:movie_id]
+        @response = HTTParty.get('http://www.omdbapi.com/?i='+ @movie_id.to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+            
+        @addmovie = Movie.create(
+            user_id: @currentUser,
+            movie_id: @movie_id,
+            setdate: params[:setdate],
+            movietitle: @response["Title"],
+            movieposter: @response["Poster"]
+        )
+            redirect_to request.referrer
+    end
+
 
     def show
         if params[:movie_title].blank?  
