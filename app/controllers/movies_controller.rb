@@ -2,12 +2,9 @@ class MoviesController < ApplicationController
     require 'httparty'
     
     def index
-        @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:search].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
-        @comments = Comment.all
+        @response = HTTParty.get('http://www.omdbapi.com/?s='+ params[:search].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
         @user=current_user
         @currentUser = current_user.id
-        @movies = Movie.where(movie_id: params[:movie_id])
-        
     end
 
     def new
