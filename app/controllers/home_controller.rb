@@ -1,8 +1,10 @@
 class HomeController < ApplicationController
     before_action :authenticate_user!
+
     def index
         @user = current_user
-        @apikey = ENV["MOVIEVERSE_API_KEY"]
+        @currentUser = @user.id 
+        @movies = Movie.where(user_id: @currentUser)
     end
 
 
