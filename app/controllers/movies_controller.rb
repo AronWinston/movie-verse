@@ -2,8 +2,7 @@ class MoviesController < ApplicationController
     require 'httparty'
     
     def index
-        @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:search].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
-        @comments = Comment.all
+        @response = HTTParty.get('http://www.omdbapi.com/?i='+ params[:search].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
         @user=current_user
         @currentUser = current_user.id
     end
@@ -16,16 +15,29 @@ class MoviesController < ApplicationController
         @currentUser = current_user.id
         @comments = Comment.where(movie_id: @movie_id)
         @movie_id = params[:movie_id]
-        
-
-        
-               @newcomment = Comment.create(
-                user_id: @currentUser,
-                movie_id: @movie_id,
-                content: params[:content]
-            )
+        @newcomment = Comment.create(
+            user_id: @currentUser,
+            movie_id: @movie_id,
+            content: params[:content]
+        )
             redirect_to request.referrer
     end
+
+    def add_movie
+        @currentUser = current_user.id
+        @movie_id = params[:movie_id]
+        @response = HTTParty.get('http://www.omdbapi.com/?i='+ @movie_id.to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+            
+        @addmovie = Movie.create(
+            user_id: @currentUser,
+            movie_id: @movie_id,
+            setdate: params[:setdate],
+            movietitle: @response["Title"],
+            movieposter: @response["Poster"]
+        )
+            redirect_to request.referrer
+    end
+
 
     def show
         if params[:movie_title].blank?  
