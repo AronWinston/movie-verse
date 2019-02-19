@@ -1,11 +1,13 @@
 <ul>
 <% if @response["Response"] == "True"%>
   <% @response["Search"].each do |moviearray| %>
-    <% if moviearray["Type"] == "movie" %>
+    <% if moviearray["Type"] == "movie" && moviearray["Poster"] != "N/A"%>
       <%= link_to show_path(id: moviearray["imdbID"]) do %>
-        <%= image_tag(moviearray["Poster"]) %>
+          <%= image_tag(moviearray["Poster"]) %> 
       <% end %>
-    <%end%>
+    <% elsif moviearray["Poster"] == "N/A"%><br/>
+      <%= link_to moviearray["Title"], show_path(id: moviearray["imdbID"])%> 
+      <%end%>
   <%end%>
 <%else%>
 <center>
