@@ -33,44 +33,15 @@
             <div class="level-item">
               <p class="subtitle is-centered"><strong>Plot:</strong> &nbsp;<%= @response["Plot"] %></p>
             </div>
-            
-          
-            
           </div>
         </div>
-        
-        
-            
       </div>
     </class>
   </div>
 </section>
 
-
-
-
-
-
-
-
-
-
-<div><!-- Movie Poster & detail section -->
-<li>
-<img src="<%= @response["Poster"] %>"></li>
-Title:<li><%= @response["Title"] %></li>
-Year: <li><%= @response["Year"] %></li>
-Runtime: <li><%= @response["Runtime"] %></li>
-Genre: <li><%= @response["Genre"] %></li>
-Actors: <li><%= @response["Actors"] %></li>
-Plot: <li><%= @response["Plot"] %></li>
-</div> 
-
-
-
 <%= render partial: 'add_movie_form'%>
 <%= render partial: 'comment_form' %>
-
 
 <div> <!-- Comments section --> 
 
