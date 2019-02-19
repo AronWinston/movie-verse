@@ -1,16 +1,41 @@
 <section class="">
-  <div class="hero-body">
-    <class class="container">
-      <figure class="image">
-        <img src="<%= @response["Poster"] %>" style="max-width: 512px;">
-      </figure>
-      <div>
-      Title:<li><%= @response["Title"] %></li>
-      Year: <li><%= @response["Year"] %></li>
-      Runtime: <li><%= @response["Runtime"] %></li>
-      Genre: <li><%= @response["Genre"] %></li>
-      Actors: <li><%= @response["Actors"] %></li>
-      Plot: <li><%= @response["Plot"] %></li>
+ 
+    
+    <class class="container level">
+      <div class="hero-body">
+        <figure class="image">
+          <img src="<%= @response["Poster"] %>" style="max-width: 512px;">
+        </figure>
+      </div>
+      
+        <div class="columns>
+          <div class="is-half is-offset-6">
+            <div class="level-item">
+              <p>Title: <%= @response["Title"] %></p>
+            </div>
+            <div class="level-item">
+              <p>Year: <%= @response["Year"] %></p>
+            </div>
+            <div class="level-item">
+              <p>Runtime: <%= @response["Runtime"] %></p>
+            </div>
+            <div class="level-item">
+              <p>Genre: <%= @response["Genre"] %></p>
+            </div>
+            <div class="level-item">
+              <p>Actors: <%= @response["Actors"] %></p>
+            </div>
+            <div class="level-item">
+              <p>Plot: <%= @response["Plot"] %></p>
+            </div>
+            
+          
+            
+          </div>
+        </div>
+        
+        
+            
       </div>
     </class>
   </div>
