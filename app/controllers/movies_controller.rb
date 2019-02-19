@@ -9,7 +9,13 @@ class MoviesController < ApplicationController
             @response = HTTParty.get('http://www.omdbapi.com/?s='+ params[:movie_title].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
             @user=current_user
             @currentUser = current_user.id
+            if @response["Reponse"] == "false"
+                redirect_to(root_path, alert: "Movie title doesn't match with any") and return
+            end
+
         end
+
+        
     end
 
     def new
@@ -48,7 +54,6 @@ class MoviesController < ApplicationController
             movietitle: @response["Title"],
             movieposter: @response["Poster"]
         )
-
             redirect_to root_path
     end
 

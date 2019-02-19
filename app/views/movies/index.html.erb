@@ -1,12 +1,18 @@
 <ul>
-<% @response["Search"].each do |moviearray| %>
-<% if moviearray["Type"] == "movie" %>
-    <img src="<%=moviearray["Poster"]%>" >
+<% if @response["Response"] == "True"%>
+  <% @response["Search"].each do |moviearray| %>
+    <% if moviearray["Type"] == "movie" %>
+      <%= link_to show_path(id: moviearray["imdbID"]) do %>
+        <%= image_tag(moviearray["Poster"]) %>
+      <% end %>
+    <%end%>
+  <%end%>
+<%else%>
+<center>
 
-    <% @movietitle = moviearray["Title"]%>
+There is no movie matching with your search.
 
+</center>
 <%end%>
-<%end%>
-
 </ul>
 

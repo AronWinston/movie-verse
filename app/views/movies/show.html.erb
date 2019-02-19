@@ -35,35 +35,22 @@
             <div class="level-item">
               <p class="subtitle is-centered"><strong>Plot:</strong> &nbsp;<%= @response["Plot"] %></p>
             </div>
-            
-          
-            
           </div>
         </div>
-        
-        
-            
       </div>
     </class>
   </div>
 </section>
 
 
-
-
-
-
-
 <%= render partial: 'add_movie_form'%>
 <%= render partial: 'comment_form' %>
-
 
 <div> <!-- Comments section --> 
 
 
 <%@comments.each do |comment|%>
 <ul>
-
 
 <li><%=comment.user.firstname%></li>
 <li><%=comment.content%></li>
