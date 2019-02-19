@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get '/movies/:id' => 'movies#show', as: 'show_page'
   get 'show' => 'movies#show', as: 'show'
   get 'shows' => 'movies#index', as: 'shows'
-  # delete 'show' => 'movies#destroy', as: 'delete'
+  delete 'show' => 'movies#destroy', as: 'delete'
   post '/create_comment', to: 'movies#create_comment'
+  delete '/delete_comment', to: 'movies#delete_comment'
   post '/add_movie', to: 'movies#add_movie'
   resources :movies
 
