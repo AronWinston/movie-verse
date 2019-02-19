@@ -1,0 +1,12 @@
+<ul>
+<% @response["Search"].each do |moviearray| %>
+  <% if moviearray["Type"] == "movie" %>
+    <% @movietitle = moviearray["Title"]%>
+    <li>
+    <%= link_to @movietitle, show_path(id: moviearray["imdbID"]) %>
+    </li>
+  <%end%>
+<%end%>
+
+</ul>
+
