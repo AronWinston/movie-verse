@@ -1,10 +1,10 @@
 <ul>
 <% @response["Search"].each do |moviearray| %>
-<% if moviearray["Type"] == "movie" %>
-<img src="<%=moviearray["Poster"]%>" >
-<% @movietitle = moviearray["Title"]%>
-
-<%end%>
+  <% if moviearray["Type"] == "movie" %>
+    <img src="<%=moviearray["Poster"]%>" >
+    <% @movietitle = moviearray["Title"]%>
+    <%= link_to @movietitle, show_path(@movietitle)%>
+  <%end%>
 <%end%>
 
 </ul>

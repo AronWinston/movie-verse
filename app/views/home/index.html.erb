@@ -82,6 +82,7 @@
 <!-- Calendar with movie title & poster in the selected date-->
 <%= month_calendar do |date| %>
   <%= date%>
+  <br/>
   <% date_string = date.to_s%>
   <% @movies.each do |movie|%>
   <% setdate_string = movie.setdate.to_s%>
