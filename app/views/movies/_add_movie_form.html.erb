@@ -4,7 +4,7 @@
 <%= hidden_field_tag(:user_id, @currentUser)%>
 <%= hidden_field_tag(:movie_id, @movie_id)%>
 <%= hidden_field_tag(:movietitle, @response["Title"] )%>
-<%= hidden_field_tag(:moiveposter, @response["Poster"]) %>
+<%= hidden_field_tag(:movieposter, @response["Poster"]) %>
 <%= form.date_field(:setdate)%>
 <%= form.submit "Submit"%>
 <% end%>
