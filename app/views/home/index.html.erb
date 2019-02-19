@@ -89,7 +89,7 @@
   <% if date_string == setdate_string%>
     <%= movie.movietitle%>
     <img src="<%=movie.movieposter%>">
-    <%= link_to "remove from calendar", delete_comment(id: comment.id), method: :delete %>
+    <%= link_to "remove from calendar", delete_path(id: movie.id), method: :delete %>
   <%end%>
 <%end%>
 <%end%>
