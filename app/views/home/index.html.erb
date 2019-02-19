@@ -1,42 +1,69 @@
 <!-- User info-->
-<div class="div-inner">
-  <div class="title-div"><h3>Profile</h3></div>
-    <div id="usershow-table-div" class="table-div">
-      <div class = "info-container">
-        <div class="profile-border">
-          <div class="display-info">
-            <div class="line">
-              <div class="bold">Fullname</div><div class="info-font"><%= @user.firstname %> <%= @user.lastname %></div>
-            </div>
-            <div class="line">
-              <div class="bold">Age</div><div class="info-font"><%= @user.age%></div>
-            </div>
-            <div class="line">
-              <div class="bold">Birthday</div><div class="info-font"><%= @user.birthday%></div>
-            </div>
-
-
-            <div class="line">
-              <div class="bold">Favorite Movie</div><div class="info-font"><%= @user.favorite_movie%></div>
-            </div>
-
-
-            <div class="line">
-              <div class="bold">Favorite Actor</div><div class="info-font"><%= @user.favorite_actor%></div>
-            </div>
-
-
-            <div class="line"></div>
-              <div class="bold">Favorite Genre</div>
-              <div class="font-info"><%= @user.favorite_genre%></div>
-            </div>
-
-
-          </div>
+<section class="section">
+  <div class="container">
+    <h1 class="title">Profile</h1>
+    <hr>
+    <main>
+    
+   <div class="tile is-ancestor">
+      <div class="tile is-4 is-parent">
+        <div class="tile is-child box notification is-warning">
+            <p class="subtitle is-2"><strong>Fullname</strong></p>
+            <p class="title is-1"><%= @user.firstname %> <%= @user.lastname %></p>
         </div>
       </div>
+      <div class="tile is-vertical">
+        <div class="tile is-parent">
+          <div class="tile is-child box notification is-info">
+            <p class="subtitle is-5">Age</p>
+            <p class="title is-4"><strong><%= @user.age%></strong></p>
+          </div>
+        </div>
+
+        <div class="tile">
+          <div class="tile is-parent"> 
+            <div class="tile is-child box notification is-info">
+              <p class="subtitle is-5">Birthday</p>
+              <p class="title is-4"><strong><%= @user.birthday%></strong></p>
+            </div>
+          </div>
+        </div>
+    
+        <div class="tile is-vertical is-10">
+            <div class="tile is-parent"> 
+              <div class="tile is-child box notification is-danger">
+                <p class="subtitle is-5">Favorite Movie</p>
+                <p class="title is-4"><strong><%= @user.favorite_movie%></strong></p>
+              </div>
+            </div>
+        
+    
+          <div class="tile is-parent">
+            <div class="tile is-child box notification is-success">
+            <p class="subtitle is-5">Favorite Actor/Actress</strong></p>
+            <p class="title is-4"><strong><%= @user.favorite_actor%></p>
+            </div>
+          </div>
+
+          <div class="tile is-parent">
+            <div class="tile is-child box notification is-success">
+            <p class="subtitle is-5">Favorite Genre</strong></p>
+            <p class="title is-4"><strong><%= @user.favorite_genre%></p>
+            </div>
+          </div>
+      
+        </div>
+    
     </div>
-</div>
+    
+    </main>
+  </div>
+</section>
+
+
+
+
+
 
 
 

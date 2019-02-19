@@ -39,7 +39,7 @@
       
               <div class="navbar-end">
                 <%= form_tag(show_path, :method => "get") do %>  
-                <%= search_field_tag :movie_title, params[:movie_title], placeholder: "Search", class: "form-control subtitle navbar-item" %>  
+                <%= search_field_tag :movie_title, params[:movie_title], placeholder: "Search for Movie", class: "form-control subtitle navbar-item" %>  
                 <%= button_tag "Go", :name => nil, class: "button is-primary is-marginless"%>  
                   <% end %>
               </div>
@@ -69,28 +69,16 @@
       </div>
       <div class="hero-body">
         <div class="container has-text-centered">
+          <h1 class="title">Welcome to MovieVerse</h1>
+          <h2 class="subtitle">You are logged in as <strong><%= current_user.email %></strong></h2>
         </div>
       </div>
-
-    
-    
-    
     
     </section>
 
     
     
-     
-    <p >
-      <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete  %>
-      <% else %>
-      <%= link_to "Sign up", new_user_registration_path  %> |
-      <%= link_to "Login", new_user_session_path  %>
-    <% end %>
-    </p>
+  
 
 
     <%= yield %>
