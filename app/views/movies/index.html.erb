@@ -1,0 +1,10 @@
+<ul>
+<% @response["Search"].each do |moviearray| %>
+<% if moviearray["Type"] == "movie" %>
+<img src="<%=moviearray["Poster"]%>" >
+<% @movietitle = moviearray["Title"]%>
+
+<%end%>
+<%end%>
+
+</ul>
