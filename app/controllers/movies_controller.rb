@@ -2,14 +2,51 @@ class MoviesController < ApplicationController
     require 'httparty'
     
     def index
+<<<<<<< HEAD
         
         @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:search].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'], limit: 2).all
         @comments = Comment.all
         @user=current_user
         @currentUser = current_user.id
         
-
+=======
+        @response = HTTParty.get('http://www.omdbapi.com/?i='+ params[:search].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+        @user=current_user
+        @currentUser = current_user.id
     end
+
+    def new
+        @newcomment = Comment.new
+    end
+>>>>>>> master
+
+    def create_comment
+        @currentUser = current_user.id
+        @comments = Comment.where(movie_id: @movie_id)
+        @movie_id = params[:movie_id]
+        @newcomment = Comment.create(
+            user_id: @currentUser,
+            movie_id: @movie_id,
+            content: params[:content]
+        )
+            redirect_to request.referrer
+    end
+
+    def add_movie
+        @currentUser = current_user.id
+        @movie_id = params[:movie_id]
+        @response = HTTParty.get('http://www.omdbapi.com/?i='+ @movie_id.to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+            
+        @addmovie = Movie.create(
+            user_id: @currentUser,
+            movie_id: @movie_id,
+            setdate: params[:setdate],
+            movietitle: @response["Title"],
+            movieposter: @response["Poster"]
+        )
+            redirect_to request.referrer
+    end
+
 
     def show
         if params[:movie_title].blank?  
@@ -20,43 +57,11 @@ class MoviesController < ApplicationController
             @currentUser = current_user.id
             @movie_id = @response["imdbID"]
             @comments = Comment.where(movie_id: @movie_id)
-            @newcomment = Comment.new(
-                user_id: @currentUser,
-                movie_id: @movie_id,
-                content: params[:content]
-            )
+           
+        end      
+    end 
+
     
-        end  
-
-          
-    end
-
-    # def show
-    #     @response = HTTParty.get('http://www.omdbapi.com/?t='+ params[:query].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
-    #     @movie_id = @response[:imdbID]
-    #     @comment=Comment.find_by(params[@movie_id])
-    # end
-
-    def new
-        @comment = Comment.new
-    end
-
-    def create
-        @currentUser = current_user.id
-        @comment = Comment.new(
-            user_id: @currentUser,
-            movie_id: @movie_id,
-            content: params[:content]
-          )
-
-          if @comment.save
-            redirect_to 'movies#show'
-          else
-            render 'new'
-          end
-        
-    end
-
     def edit
     end
 
