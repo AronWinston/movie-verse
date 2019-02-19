@@ -2,6 +2,7 @@
 <% @response["Search"].each do |moviearray| %>
   <% if moviearray["Type"] == "movie" %>
     <% @movietitle = moviearray["Title"]%>
+     <img src="<%=@movieposter = moviearray["Poster"]%>">
     <li>
     <%= link_to show_path(id: moviearray["imdbID"]) do %>
        <%= image_tag(moviearray["Poster"]) %>

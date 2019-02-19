@@ -28,6 +28,15 @@ class MoviesController < ApplicationController
             redirect_to request.referrer
     end
 
+    def delete_comment
+        @currentUser = current_user.id
+        @comments = Comment.find(params[:id])
+        @comments.destroy
+        
+        redirect_to request.referrer
+        
+    end
+
     def add_movie
         @currentUser = current_user.id
         @movie_id = params[:movie_id]
@@ -50,15 +59,10 @@ class MoviesController < ApplicationController
     end 
 
     def destroy
-        @selectedmovie = Movie.find(params[:id])
-        @selectedmovie.destroy
-            redirect_to root_path
-    end
-
-    def delete_comment
-        @currentUser = current_user.id
-        @comment = Comment.where(id: params[:id], user_id: @currentUser)
-        @comment.destroy
+        
+        @movie = Movie.find(params[:id])
+        @movie.destroy
+            redirect_to request.referrer
     end
 
     private
