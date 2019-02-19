@@ -39,29 +39,18 @@ class MoviesController < ApplicationController
             redirect_to request.referrer
     end
 
-
     def show
-        if params[:movie_title].blank?  
-            redirect_to(root_path, alert: "Empty field!") and return  
-        else  
-            @movietitle = params[:movie_title].downcase
+        # if moviearray["Title"].blank?  
+        #     redirect_to(root_path, alert: "Empty field!") and return  
+        # else  
+            # @movietitle = params[:movie_title].downcase
             @response = HTTParty.get('http://www.omdbapi.com/?t='+ @movietitle.to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
             @currentUser = current_user.id
             @movie_id = @response["imdbID"]
             @comments = Comment.where(movie_id: @movie_id)
            
-        end      
+        # end      
     end 
-
-    
-    def edit
-    end
-
-    def update
-    end
-
-    def destroy
-    end
 
     private
     def search_params
