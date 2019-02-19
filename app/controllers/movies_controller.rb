@@ -51,10 +51,10 @@ class MoviesController < ApplicationController
     end 
 
     def destroy
-        @currentUser = current_user.id
-        @movie = Movie.where(user_id: @currentUser, movie_id: @movie_id)
+        
+        @movie = Movie.find(params[:id])
         @movie.destroy
-        redirect_to root_path
+            redirect_to request.referrer
     end
 
     private
