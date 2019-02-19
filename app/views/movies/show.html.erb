@@ -52,7 +52,6 @@
 <%@comments.each do |comment|%>
 <ul>
 
-
 <li><%=comment.user.firstname%></li>
 <li><%=comment.content%></li>
 <%if @currentUser == comment.user_id%>

@@ -4,7 +4,9 @@
     <% @movietitle = moviearray["Title"]%>
      <img src="<%=@movieposter = moviearray["Poster"]%>">
     <li>
-    <%= link_to @movietitle, show_path(id: moviearray["imdbID"]) %>
+    <%= link_to show_path(id: moviearray["imdbID"]) do %>
+       <%= image_tag(moviearray["Poster"]) %>
+    <% end %>
     </li>
   <%end%>
 <%end%>
