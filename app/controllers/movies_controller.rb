@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
     
     def index
 
-        @response = HTTParty.get('http://www.omdbapi.com/?s='+ params[movie_title].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+        @response = HTTParty.get('http://www.omdbapi.com/?s='+ params[:movie_title].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
         @user=current_user
         @currentUser = current_user.id
     end
