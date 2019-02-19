@@ -38,7 +38,7 @@
             <div class="navbar-menu" id="navMenu">
       
               <div class="navbar-end">
-                <%= form_tag(show_path, :method => "get") do %>  
+                <%= form_tag(shows_path, :method => "get") do %>  
                 <%= search_field_tag :movie_title, params[:movie_title], placeholder: "Search for Movie", class: "form-control subtitle navbar-item has-text-black" %>  
                 <%= button_tag "Go", :name => nil, class: "button is-primary is-marginless"%>  
                   <% end %>
