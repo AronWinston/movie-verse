@@ -1,13 +1,59 @@
-<div><!-- Movie Poster & detail section -->
-<li>
-<img src="<%= @response["Poster"] %>"></li>
-Title:<li><%= @response["Title"] %></li>
-Year: <li><%= @response["Year"] %></li>
-Runtime: <li><%= @response["Runtime"] %></li>
-Genre: <li><%= @response["Genre"] %></li>
-Actors: <li><%= @response["Actors"] %></li>
-Plot: <li><%= @response["Plot"] %></li>
-</div>
+<section class="">
+ 
+    
+    <class class="container level">
+      <div class="hero-body ">
+        <figure class="image">
+          <img src="<%= @response["Poster"] %>" style="max-width: 512px;">
+        </figure>
+      </div>
+      
+        <div class="columns>
+          <div class="is-half is-offset-6">
+            <div class="level-item">
+              <p class="title"><strong>Title:</strong> &nbsp;<%= @response["Title"] %></p>
+            </div>
+            <br>
+            <div class="level-item">
+              <p class="subtitle"><strong>Year:</strong> &nbsp;<%= @response["Year"] %></p>
+            </div>
+            <br>
+            <div class="level-item">
+              <p class="subtitle"><strong>Runtime:</strong> &nbsp;<%= @response["Runtime"] %></p>
+            </div>
+            <br>
+            <div class="level-item">
+              <p class="subtitle"><strong>Genre:</strong> &nbsp;<%= @response["Genre"] %></p>
+            </div>
+            <br>
+            <div class="level-item">
+              <p class="subtitle"><strong>Actors:</strong> &nbsp;<%= @response["Actors"] %></p>
+            </div>
+            <br>
+            <div class="level-item">
+              <p class="subtitle is-centered"><strong>Plot:</strong> &nbsp;<%= @response["Plot"] %></p>
+            </div>
+            
+          
+            
+          </div>
+        </div>
+        
+        
+            
+      </div>
+    </class>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
 
 <div><!-- Movie Poster & detail section -->
 <li>
