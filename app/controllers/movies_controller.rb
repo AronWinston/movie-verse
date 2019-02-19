@@ -48,7 +48,6 @@ class MoviesController < ApplicationController
             movietitle: @response["Title"],
             movieposter: @response["Poster"]
         )
-
             redirect_to root_path
     end
 
