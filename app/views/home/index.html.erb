@@ -89,6 +89,7 @@
   <% if date_string == setdate_string%>
     <%= movie.movietitle%>
     <img src="<%=movie.movieposter%>">
+    <%= link_to "Delete This movie", delete_path(@movie), method: :delete %>
   <%end%>
 <%end%>
 <%end%>
