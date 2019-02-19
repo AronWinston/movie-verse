@@ -1,7 +1,7 @@
 
 
 <!-- Comment form-->
-<br>
+
 <%= form_with model: @newcomment, local: true, url: '/create_comment' do |form|%>
 
 <p>
@@ -15,11 +15,9 @@
 
 <p>
 <%= form.label :comments%><br>
-<%= form.text_field (:content)%>
+<%= form.text_field (:content)%><%=form.submit 'submit' %>
 </p>
 
-<p>
-<%=form.submit 'submit' %>
-</p>
+
 
 <%end%>

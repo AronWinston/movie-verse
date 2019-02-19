@@ -42,21 +42,39 @@
   </div>
 </section>
 
-
+<center>
+<div class="addmovie">
+<h2><strong>Add Movie to Calendar</strong></h2>
 <%= render partial: 'add_movie_form'%>
-<%= render partial: 'comment_form' %>
-
-<div> <!-- Comments section --> 
-
-
-<%@comments.each do |comment|%>
-<ul>
-
-<li><%=comment.user.firstname%></li>
-<li><%=comment.content%></li>
-<%if @currentUser == comment.user_id%>
-<%= link_to "delete comment", delete_comment_path(id: comment.id), method: :delete %>
-<%end%>
-</ul>
-<%end%>
 </div>
+</center>
+
+
+
+
+<div class="box">
+<div class="box comment">
+<%= render partial: 'comment_form' %>
+</div>
+
+<article class="media">
+  <%@comments.each do |comment|%>
+    <div class="media-content">
+    
+      <div class="content">
+      
+        <p>
+          <strong><%=comment.user.firstname%></strong> <small><%=comment.user.email%></small> 
+          <br>
+          <%=comment.content%>
+        </p>
+      </div>
+      <%if @currentUser == comment.user_id%>
+      <%= link_to "delete comment", delete_comment_path(id: comment.id), method: :delete %>
+      <%end%>
+    <%end%>
+    </div>
+  </article>
+ 
+</div>
+

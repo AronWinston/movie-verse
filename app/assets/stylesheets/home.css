@@ -16,4 +16,35 @@
   justify-content: center;
   align-items: center;
 }
+
+.media{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  padding: 15px;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: #00d1b2;
+}
+
+
+.comment{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  padding: 15px;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: #00d1b2;
+}
+
+.addmovie{
+  margin: 10px;
+  padding: 15px;
+}
+
+
+
+
+
 /*# sourceMappingURL=home.css.map */
