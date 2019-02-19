@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
+gem "searchkick"
 # gem 'httparty'
 gem 'simple_form'
 gem "bulma-rails", "~> 0.7.4"
