@@ -44,7 +44,10 @@ class MoviesController < ApplicationController
         #     redirect_to(root_path, alert: "Empty field!") and return  
         # else  
             # @movietitle = params[:movie_title].downcase
-            @response = HTTParty.get('http://www.omdbapi.com/?t='+ @movietitle.to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+
+            @response = HTTParty.get('http://www.omdbapi.com/?i='+ params[:id].to_s + "&apikey=" + ENV['MOVIEVERSE_API_KEY'])
+        
+
             @currentUser = current_user.id
             @movie_id = @response["imdbID"]
             @comments = Comment.where(movie_id: @movie_id)
