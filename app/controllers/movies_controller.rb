@@ -50,10 +50,15 @@ class MoviesController < ApplicationController
     end 
 
     def destroy
+        @selectedmovie = Movie.find(params[:id])
+        @selectedmovie.destroy
+            redirect_to root_path
+    end
+
+    def delete_comment
         @currentUser = current_user.id
-        @movie = Movie.where(user_id: @currentUser, movie_id: @movie_id)
-        @movie.destroy
-        redirect_to root_path
+        @comment = Comment.where(id: params[:id], user_id: @currentUser)
+        @comment.destroy
     end
 
     private

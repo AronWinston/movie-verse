@@ -3,7 +3,9 @@
   <% if moviearray["Type"] == "movie" %>
     <% @movietitle = moviearray["Title"]%>
     <li>
-    <%= link_to @movietitle, show_path(id: moviearray["imdbID"]) %>
+    <%= link_to show_path(id: moviearray["imdbID"]) do %>
+       <%= image_tag(moviearray["Poster"]) %>
+    <% end %>
     </li>
   <%end%>
 <%end%>

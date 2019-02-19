@@ -49,10 +49,9 @@
 <%@comments.each do |comment|%>
 <ul>
 
-
 <li><%=comment.user.firstname%></li>
 <li><%=comment.content%></li>
-
+<%= link_to "Delete This Comment", delete_comment_path(id: comment.id), method: :delete %>
 </ul>
 <%end%>
 </div>
