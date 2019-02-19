@@ -2,7 +2,7 @@
  
     
     <class class="container level">
-      <div class="hero-body">
+      <div class="hero-body ">
         <figure class="image">
           <img src="<%= @response["Poster"] %>" style="max-width: 512px;">
         </figure>
@@ -11,22 +11,27 @@
         <div class="columns>
           <div class="is-half is-offset-6">
             <div class="level-item">
-              <p>Title: <%= @response["Title"] %></p>
+              <p class="title"><strong>Title:</strong> &nbsp;<%= @response["Title"] %></p>
             </div>
+            <br>
             <div class="level-item">
-              <p>Year: <%= @response["Year"] %></p>
+              <p class="subtitle"><strong>Year:</strong> &nbsp;<%= @response["Year"] %></p>
             </div>
+            <br>
             <div class="level-item">
-              <p>Runtime: <%= @response["Runtime"] %></p>
+              <p class="subtitle"><strong>Runtime:</strong> &nbsp;<%= @response["Runtime"] %></p>
             </div>
+            <br>
             <div class="level-item">
-              <p>Genre: <%= @response["Genre"] %></p>
+              <p class="subtitle"><strong>Genre:</strong> &nbsp;<%= @response["Genre"] %></p>
             </div>
+            <br>
             <div class="level-item">
-              <p>Actors: <%= @response["Actors"] %></p>
+              <p class="subtitle"><strong>Actors:</strong> &nbsp;<%= @response["Actors"] %></p>
             </div>
+            <br>
             <div class="level-item">
-              <p>Plot: <%= @response["Plot"] %></p>
+              <p class="subtitle is-centered"><strong>Plot:</strong> &nbsp;<%= @response["Plot"] %></p>
             </div>
             
           
