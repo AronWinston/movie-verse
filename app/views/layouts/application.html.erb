@@ -14,38 +14,73 @@
 
   <body>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
       <!-- Navbar -->
-    <nav>
-          <% if user_signed_in? %>
-            <div >
-            <ul >
-              <li><%= link_to "Home", root_url%>
-            </ul>
-        <%= form_tag(show_path, :method => "get") do %>  
 
-            <%= search_field_tag :movie_title, params[:movie_title], placeholder: "Search", class: "form-control" %>  
+    <section class="hero is-dark is-bold">
+      <div class="hero-head">
+        <nav class="navbar is-primary" role="navigation" aria-label="Main navigation">
+          <div class="container">
 
-              <%= button_tag "", :name => nil%>  
-              <% end %>
+            <% if user_signed_in? %>
+
+            <div class="navbar-brand">
+              <a href="/" class="navbar-item title is-marginless">Home</a>
+              <a href="/users/edit" class="navbar-item subtitle is-marginless">Edit Profile</a>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"navbar-item subtitle is-marginless"  %>
+              <button class="button navbar-burger" data-target="">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+            <div class="navbar-menu" id="navMenu">
       
-    <% else %>
-      <div >
-        <ul>
-          <li><%= link_to "Home", root_url%>
-        </ul>
-        <div>
-          <ul>
-          
-            <li><%= link_to "Sign up", new_user_registration_path%> </li> 
-            <li><%= link_to "Login", new_user_session_path%> </li> 
-           </ul>
+              <div class="navbar-end">
+                <%= form_tag(show_path, :method => "get") do %>  
+                <%= search_field_tag :movie_title, params[:movie_title], placeholder: "Search", class: "form-control subtitle navbar-item" %>  
+                <%= button_tag "Go", :name => nil, class: "button is-primary is-marginless"%>  
+                  <% end %>
+              </div>
+            </div>
+
+            <% else %>
+            <div class="navbar-brand">
+              <a href="/" class="navbar-item title is-marginless">Home</a>
+              <button class="button navbar-burger" data-target="">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+            <div class="navbar-menu" id="navMenu">
+      
+              <div class="navbar-end">
+               <a href="/users/sign_up" class="navbar-item subtitle is-marginless">Sign Up</a>
+               <a href="/users/sign_in" class="navbar-item subtitle is-marginless">Login</a> 
+              </div>
+            </div>
+
+            <% end %>
+
+          </div>
+        </nav>
+      </div>
+      <div class="hero-body">
+        <div class="container has-text-centered">
         </div>
       </div>
-    <%end%>
-    </nav>
 
+    
+    
+    
+    
+    </section>
+
+    
+    
+     
     <p >
       <% if user_signed_in? %>
       Logged in as <strong><%= current_user.email %></strong>.
