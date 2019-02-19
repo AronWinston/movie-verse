@@ -55,6 +55,17 @@
 
 
 
+<div><!-- Movie Poster & detail section -->
+<li>
+<img src="<%= @response["Poster"] %>"></li>
+Title:<li><%= @response["Title"] %></li>
+Year: <li><%= @response["Year"] %></li>
+Runtime: <li><%= @response["Runtime"] %></li>
+Genre: <li><%= @response["Genre"] %></li>
+Actors: <li><%= @response["Actors"] %></li>
+Plot: <li><%= @response["Plot"] %></li>
+</div> 
+
 
 
 <%= render partial: 'add_movie_form'%>
