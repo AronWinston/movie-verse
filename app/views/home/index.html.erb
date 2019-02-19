@@ -87,9 +87,16 @@
   <% @movies.each do |movie|%>
   <% setdate_string = movie.setdate.to_s%>
   <% if date_string == setdate_string%>
-    <%= movie.movietitle%>
-    <img src="<%=movie.movieposter%>">
+    <% if movie.movieposter != "N/A"%>
+      <%= link_to show_path(id: movie.movie_id) do %>
+          <%= image_tag(movie.movieposter) %> 
+      <% end %>
+    <% else%>
+      <%= link_to movie.movietitle, show_path(id: movie.movie_id)%><br/>
+    <% end%>
     <%= link_to "remove from calendar", delete_path(id: movie.id), method: :delete %>
   <%end%>
 <%end%>
 <%end%>
+
+
