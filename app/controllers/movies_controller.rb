@@ -28,6 +28,15 @@ class MoviesController < ApplicationController
             redirect_to request.referrer
     end
 
+    def delete_comment
+        @currentUser = current_user.id
+        @comments = Comment.find(params[:id])
+        @comments.destroy
+        
+        redirect_to request.referrer
+        
+    end
+
     def add_movie
         @currentUser = current_user.id
         @movie_id = params[:movie_id]
