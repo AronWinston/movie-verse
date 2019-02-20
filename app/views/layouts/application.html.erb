@@ -29,13 +29,9 @@
               <a href="/" class="navbar-item title is-marginless">Home</a>
               <a href="/users/edit" class="navbar-item subtitle is-marginless">Edit Profile</a>
               <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"navbar-item subtitle is-marginless"  %>
-              <button class="button navbar-burger" data-target="">
-                <span></span>
-                <span></span>
-                <span></span>
-              </button>
+              
             </div>
-            <div class="navbar-menu" id="navMenu">
+            <div class="navbar-menu is-active" id="navMenu">
       
               <div class="navbar-end">
                 <%= form_tag(shows_path, :method => "get") do %>  
