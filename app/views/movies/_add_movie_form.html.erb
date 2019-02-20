@@ -1,10 +1,19 @@
 
 <!-- Adding movie & setting date form-->
-<%= form_with model: @movies, local:true, url: '/add_movie' do |form|%>
-<%= hidden_field_tag(:user_id, @currentUser)%>
-<%= hidden_field_tag(:movie_id, @movie_id)%>
-<%= hidden_field_tag(:movietitle, @response["Title"] )%>
-<%= hidden_field_tag(:movieposter, @response["Poster"]) %>
-<%= form.date_field(:setdate)%>
-<%= form.submit "Submit"%>
-<% end%>
+
+
+<div class="field">
+  <label class="label is-medium"></label>
+    <div class="control">
+      <%= form_with model: @movies, local:true, url: '/add_movie' do |form|%>
+      <%= hidden_field_tag(:user_id, @currentUser)%>
+      <%= hidden_field_tag(:movie_id, @movie_id)%>
+      <%= hidden_field_tag(:movietitle, @response["Title"] )%>
+      <%= hidden_field_tag(:movieposter, @response["Poster"]) %>
+      <%= form.date_field(:setdate)%>
+    
+    </div>
+      <%= form.submit "Submit", class:"button is-primary "%>
+      <% end %>
+  
+</div>
