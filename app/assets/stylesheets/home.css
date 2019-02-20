@@ -16,4 +16,63 @@
   justify-content: center;
   align-items: center;
 }
+
+
+.my-content-wrapper {
+
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.element {
+  margin-top: 35px;
+  
+}
+
+.box-shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.media{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  padding: 15px;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: #00d1b2;
+}
+
+
+.comment{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  padding: 15px;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: #00d1b2;
+}
+
+.addmovie{
+  margin: 10px;
+  padding: 15px;
+
+}
+
+
+
+
+
+
+
+.yourboy{
+ 
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px #888888;
+ 
+}
+
 /*# sourceMappingURL=home.css.map */

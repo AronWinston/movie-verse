@@ -3,7 +3,7 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="field ">
     <%= f.input :email, autofocus: true, autocomplete: "email" %><br />
     
   </div>
@@ -35,7 +35,8 @@
   </div>
 
     <div class="field">
-    <%= f.input :birthday, autocomplete: "birthday" %><br />
+    <%= f.label "Birthday"%>
+    <%= f.date_field :birthday, autocomplete: "birthday" %><br />
     
   </div>
 
