@@ -1,5 +1,5 @@
 .hero {
-  background: url(hero2.jpg);
+  background-color: lightslategray;
   
   
 }
@@ -7,11 +7,16 @@
 
 
 #container {
-  background-color: black;
+  background-color:#00d1b2;
+  border-radius: 6px;
 }
 
 .card-font {
   color: whitesmoke;
+}
+
+.movieverse{
+  font-size: 20px;
 }
 
 .center {
