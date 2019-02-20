@@ -66,6 +66,8 @@
 </section>
 
 
+<!-- Calendar with movie title & poster in the selected date-->
+
 <%= month_calendar do |date| %>
   <%= date%>
   <br/>
@@ -73,54 +75,38 @@
   <% @movies.each do |movie|%>
   <% setdate_string = movie.setdate.to_s%>
   <% if date_string == setdate_string%>
-
-<div class="card is-succes is-bold">
-  <div class=">
+  <div class="card is-succes is-bold">
+  <div class="">
     <div class="media">
       
     </div>
     <footer class="card-footer-border-top">
       <p class="card-footer-item card-image">
-        <span>
-          
-              <img src="<%= movie.movieposter %>" class="image">
-         
-        </span>
+        <span>                                                    
+    <% if movie.movieposter != "N/A"%>
+      <%= link_to show_path(id: movie.movie_id) do %>
+          <%= image_tag(movie.movieposter) %> 
+      <% end %>
+      </span>
       </p>
       <p class="card-footer-item">
         <span>
           <strong><%= movie.movietitle%></strong>
         </span>
       </p>
-      <p class="card-footer-item is-paddingless is-marginless">
-        <span>
-        <%= link_to delete_path(id: movie.id), method: :delete, class: "card-header-icon" do %> 
-        <i class="fas fa-trash-alt fa-lg" aria-hidden="true"></i>
-        <% end %>
-        </span>
-      </p>
+    <% else%>
+      <%= link_to movie.movietitle, show_path(id: movie.movie_id)%><br/>
+    <% end%>
+    <%= link_to delete_path(id: movie.id), method: :delete, class: "card-header-icon" do %>
+      <i class="fas fa-trash-alt fa-lg" aria-hidden="true"></i>
+      <% end%>
+           </p>
     </footer>
-  </div>
-</div>
-  <% end %>
+    </div>
+</div>`
   <%end%>
+<%end%>
 <%end%>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Calendar with movie title & poster in the selected date-->
