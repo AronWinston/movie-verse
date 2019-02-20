@@ -7,9 +7,9 @@
     
    <div class="tile is-ancestor">
       <div class="tile is-4 is-parent">
-        <div class="tile is-child box notification is-info">
-            <p class="subtitle is-2">Favorite Movie</p>
-            <p class="title is-1"><strong><%= @user.favorite_movie%></strong></p>
+        <div class="tile is-child box notification is-dark is-bold">
+            <p class="subtitle is-5">Favorite Movie</p>
+            <p class="title is-4"><strong><%= @user.favorite_movie%></strong></p>
             
           <figure class="image is-3by4">
             <img src="<%= @response["Poster"] %>">
@@ -18,7 +18,7 @@
       </div>
       <div class="tile is-vertical">
         <div class="tile is-parent">
-          <div class="tile is-child box notification is-info">
+          <div class="tile is-child box notification is-primary">
             <p class="subtitle is-5"><strong>Fullname</strong></p>
             <p class="title is-4"><%= @user.firstname %> <%= @user.lastname %></p>
           </div>
@@ -26,17 +26,17 @@
 
         <div class="tile">
           <div class="tile is-parent"> 
-            <div class="tile is-child box notification is-info">
-            <p class="subtitle is-5">Age</p>
+            <div class="tile is-child box notification is-primary">
+            <p class="subtitle is-5"><strong>Age</strong></p>
             <p class="title is-4"><strong><%= @user.age%></strong></p>
             </div>
           </div>
         </div>
     
-        <div class="tile is-vertical is-10">
+        <div class="tile is-vertical">
             <div class="tile is-parent"> 
-              <div class="tile is-child box notification is-info">
-                <p class="subtitle is-5">Birthday</p>
+              <div class="tile is-child box notification is-primary">
+                <p class="subtitle is-5"><strong>Birthday</strong></p>
               <p class="title is-4"><strong><%= @user.birthday%></strong></p>
               </div>
             </div>
@@ -44,16 +44,16 @@
         
     
           <div class="tile is-parent">
-            <div class="tile is-child box notification is-info">
-            <p class="subtitle is-5">Favorite Actor/Actress</strong></p>
-            <p class="title is-4"><strong><%= @user.favorite_actor%></p>
+            <div class="tile is-child box notification is-primary">
+            <p class="subtitle is-5"><strong>Favorite Actor/Actress</strong></p>
+            <p class="title is-4"><strong><%= @user.favorite_actor%></strong></p>
             </div>
           </div>
 
           <div class="tile is-parent">
-            <div class="tile is-child box notification is-info">
-            <p class="subtitle is-5">Favorite Genre</strong></p>
-            <p class="title is-4"><strong><%= @user.favorite_genre%></p>
+            <div class="tile is-child box notification is-primary">
+            <p class="subtitle is-5"><strong>Favorite Genre</strong></p>
+            <p class="title is-4"><strong><%= @user.favorite_genre%></strong></p>
             </div>
           </div>
       
@@ -64,6 +64,50 @@
     </main>
   </div>
 </section>
+
+
+<%= month_calendar do |date| %>
+  <%= date%>
+  <br/>
+  <% date_string = date.to_s%>
+  <% @movies.each do |movie|%>
+  <% setdate_string = movie.setdate.to_s%>
+  <% if date_string == setdate_string%>
+
+<div class="card is-succes is-bold">
+  <div class=">
+    <div class="media">
+      
+    </div>
+    <footer class="card-footer-border-top">
+      <p class="card-footer-item card-image">
+        <span>
+          
+              <img src="<%= movie.movieposter %>" class="image">
+         
+        </span>
+      </p>
+      <p class="card-footer-item">
+        <span>
+          <strong><%= movie.movietitle%></strong>
+        </span>
+      </p>
+      <p class="card-footer-item is-paddingless is-marginless">
+        <span>
+        <%= link_to delete_path(id: movie.id), method: :delete, class: "card-header-icon" do %> 
+        <i class="fas fa-trash-alt fa-lg" aria-hidden="true"></i>
+        <% end %>
+        </span>
+      </p>
+    </footer>
+  </div>
+</div>
+  <% end %>
+  <%end%>
+<%end%>
+
+
+
 
 
 
@@ -80,6 +124,7 @@
 
 
 <!-- Calendar with movie title & poster in the selected date-->
+
 <%= month_calendar do |date| %>
   <%= date%>
   <br/>
@@ -87,16 +132,37 @@
   <% @movies.each do |movie|%>
   <% setdate_string = movie.setdate.to_s%>
   <% if date_string == setdate_string%>
+  <div class="card is-succes is-bold">
+  <div class=">
+    <div class="media">
+      
+    </div>
+    <footer class="card-footer-border-top">
+      <p class="card-footer-item card-image">
+        <span>                                                    
     <% if movie.movieposter != "N/A"%>
       <%= link_to show_path(id: movie.movie_id) do %>
           <%= image_tag(movie.movieposter) %> 
       <% end %>
+      </span>
+      </p>
+      <p class="card-footer-item">
+        <span>
+          <strong><%= movie.movietitle%></strong>
+        </span>
+      </p>
     <% else%>
       <%= link_to movie.movietitle, show_path(id: movie.movie_id)%><br/>
     <% end%>
     <%= link_to "remove from calendar", delete_path(id: movie.id), method: :delete %>
+      <i class="fas fa-trash-alt fa-lg" aria-hidden="true"></i>
+           </p>
+    </footer>
+    </div>
+</div>`
   <%end%>
 <%end%>
 <%end%>
+
 
 
