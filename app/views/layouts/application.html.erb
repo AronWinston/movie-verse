@@ -39,8 +39,8 @@
       
               <div class="navbar-end">
                 <%= form_tag(shows_path, :method => "get") do %>  
-                <%= search_field_tag :movie_title, params[:movie_title], placeholder: "Search for Movie", class: "form-control subtitle navbar-item has-text-black" %>  
-                <%= button_tag "Go", :name => nil, class: "button is-primary is-marginless" %>   
+                <%= search_field_tag :movie_title, params[:movie_title], placeholder: "Search for Movie", class: "form-control subtitle navbar-item has-text-black is-pulled-left" %>  
+                <%= button_tag "Go", :name => nil, class: "button is-primary is-pulled-right" %>   
                   <% end %>
               </div>
             </div>
@@ -75,7 +75,6 @@
       </div>
     
     </section>
-
     <%= yield %>
   </body>
 </html>

@@ -8,15 +8,15 @@
    <div class="tile is-ancestor">
       <div class="tile is-4 is-parent">
         <div class="tile is-child box notification is-primary">
-            <p class="subtitle is-2">Favorite Movie</p>
-            <p class="title is-1"><strong><%= @user.favorite_movie%></strong></p>
+            <p class="subtitle is-5">Favorite Movie</p>
+            <p class="title is-4"><strong><%= @user.favorite_movie%></strong></p>
             
           <figure class="image is-3by4">
             <img src="<%= @response["Poster"] %>">
           </figure>
         </div>
       </div>
-      <div class="tile is-vertical is-8">
+      <div class="tile is-vertical">
         <div class="tile is-parent">
           <div class="tile is-child box notification is-primary">
             <p class="subtitle is-5"><strong>Fullname</strong></p>
@@ -27,7 +27,7 @@
         <div class="tile">
           <div class="tile is-parent"> 
             <div class="tile is-child box notification is-primary">
-            <p class="subtitle is-5">Age</p>
+            <p class="subtitle is-5"><strong>Age</strong></p>
             <p class="title is-4"><strong><%= @user.age%></strong></p>
             </div>
           </div>
@@ -36,7 +36,7 @@
         <div class="tile is-vertical">
             <div class="tile is-parent"> 
               <div class="tile is-child box notification is-primary">
-                <p class="subtitle is-5">Birthday</p>
+                <p class="subtitle is-5"><strong>Birthday</strong></p>
               <p class="title is-4"><strong><%= @user.birthday%></strong></p>
               </div>
             </div>
@@ -45,15 +45,15 @@
     
           <div class="tile is-parent">
             <div class="tile is-child box notification is-primary">
-            <p class="subtitle is-5">Favorite Actor/Actress</strong></p>
-            <p class="title is-4"><strong><%= @user.favorite_actor%></p>
+            <p class="subtitle is-5"><strong>Favorite Actor/Actress</strong></p>
+            <p class="title is-4"><strong><%= @user.favorite_actor%></strong></p>
             </div>
           </div>
 
           <div class="tile is-parent">
             <div class="tile is-child box notification is-primary">
-            <p class="subtitle is-5">Favorite Genre</strong></p>
-            <p class="title is-4"><strong><%= @user.favorite_genre%></p>
+            <p class="subtitle is-5"><strong>Favorite Genre</strong></p>
+            <p class="title is-4"><strong><%= @user.favorite_genre%></strong></p>
             </div>
           </div>
       
@@ -64,6 +64,50 @@
     </main>
   </div>
 </section>
+
+
+<%= month_calendar do |date| %>
+  <%= date%>
+  <br/>
+  <% date_string = date.to_s%>
+  <% @movies.each do |movie|%>
+  <% setdate_string = movie.setdate.to_s%>
+  <% if date_string == setdate_string%>
+
+<div class="card is-succes is-bold">
+  <div class=">
+    <div class="media">
+      
+    </div>
+    <footer class="card-footer-border-top">
+      <p class="card-footer-item card-image">
+        <span>
+          
+              <img src="<%= movie.movieposter %>" class="image">
+         
+        </span>
+      </p>
+      <p class="card-footer-item">
+        <span>
+          <strong><%= movie.movietitle%></strong>
+        </span>
+      </p>
+      <p class="card-footer-item is-paddingless is-marginless">
+        <span>
+        <%= link_to delete_path(id: movie.id), method: :delete, class: "card-header-icon" do %> 
+        <i class="fas fa-trash-alt fa-lg" aria-hidden="true"></i>
+        <% end %>
+        </span>
+      </p>
+    </footer>
+  </div>
+</div>
+  <% end %>
+  <%end%>
+<%end%>
+
+
+
 
 
 
@@ -80,16 +124,3 @@
 
 
 <!-- Calendar with movie title & poster in the selected date-->
-<%= month_calendar do |date| %>
-  <%= date%>
-  <br/>
-  <% date_string = date.to_s%>
-  <% @movies.each do |movie|%>
-  <% setdate_string = movie.setdate.to_s%>
-  <% if date_string == setdate_string%>
-    <%= movie.movietitle%>
-    <img src="<%=movie.movieposter%>">
-    <%= link_to "remove from calendar", delete_path(id: movie.id), method: :delete %>
-  <%end%>
-<%end%>
-<%end%>
