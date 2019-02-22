@@ -4,8 +4,8 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "E-mail" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -22,48 +22,44 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placehoder: "New Password" %>
   </div>
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.password_field :current_password, autocomplete: "current-password" , placehoder: "Current Password"%>
   </div>
     
   <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname, autocomplete: "first name" %>
+    <%= f.text_field :firstname, autocomplete: "first name", placehoder: "First name" %>
   </div>
 
     <div class="field">
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname, autocomplete: "last name" %>
+
+    <%= f.text_field :lastname, autocomplete: "last name", placehoder: "Last name" %>
   </div>
 
     <div class="field">
-    <%= f.label :age %><br />
-    <%= f.text_field :age, autocomplete: "age" %>
+
+    <%= f.number_field :age, autocomplete: "age", placehoder: "Age" %>
   </div>
 
     <div class="field">
     <%= f.label :birthday %><br />
-    <%= f.date_field :birthday, autocomplete: "birthday" %>
+    <%= f.date_field :birthday, autocomplete: "birthday", placehoder: "Birthday" %>
   </div>
 
     <div class="field">
-    <%= f.label :favorite_movie %><br />
-    <%= f.text_field :favorite_movie, autocomplete: "favorite movie" %>
+
+    <%= f.text_field :favorite_movie, autocomplete: "favorite movie", placehoder: "Favorite Movie" %>
   </div>
 
     <div class="field">
-    <%= f.label :favorite_actor %><br />
-    <%= f.text_field :favorite_actor, autocomplete: "favorite actor" %>
+    <%= f.text_field :favorite_actor, autocomplete: "favorite actor", placehoder: "Favorite Actor" %>
   </div>
 
     <div class="field">
-    <%= f.label :favorite_genre %><br />
-    <%= f.text_field :favorite_genre, autocomplete: "favorite movie" %>
+    <%= f.text_field :favorite_genre, autocomplete: "favorite movie", placehoder: "Favorite Genre" %>
   </div>
 
 

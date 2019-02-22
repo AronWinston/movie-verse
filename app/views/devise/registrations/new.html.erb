@@ -4,54 +4,53 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field ">
-    <%= f.input :email, autofocus: true, autocomplete: "email" %><br />
-    
+    <%= f.email_field :email, autofocus: true, placeholder: "E-mail" %><br />
   </div>
 
   <div class="field">
     
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <h5> (<%= @minimum_password_length %> characters minimum)</h5>
     <% end %><br />
-    <%= f.input :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password" %>
   </div>
 
   <div class="field">
-    <%= f.input :password_confirmation, autocomplete: "new-password" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password Confirmation" %><br />
   </div>
 
     <div class="field">
-    <%= f.input :firstname, autocomplete: "first name" %><br />
+    <%= f.text_field :firstname, autocomplete: "first name", placeholder: "First name" %><br />
     </div>
 
     <div class="field">
-    <%= f.input :lastname, autocomplete: "last name" %><br />
+    <%= f.text_field :lastname, autocomplete: "last name", placeholder: "Last name" %><br />
     
   </div>
 
     <div class="field">
-    <%= f.input :age, autocomplete: "age" %><br />
+    <%= f.number_field :age, placeholder: "Age"%><br />
     
   </div>
 
     <div class="field">
-    <%= f.label "Birthday"%>
-    <%= f.date_field :birthday, autocomplete: "birthday" %><br />
+    <%= f.label "Birthday"%><br/>
+    <%= f.date_field :birthday, autocomplete: "birthday"%><br />
     
   </div>
 
     <div class="field">
-    <%= f.input :favorite_movie, autocomplete: "favorite movie" %><br />
+    <%= f.text_field :favorite_movie, autocomplete: "favorite movie", placeholder: "Favorite Movie"%><br />
     
   </div>
 
     <div class="field">
-    <%= f.input :favorite_actor, autocomplete: "favorite actor" %><br />
+    <%= f.text_field :favorite_actor, autocomplete: "favorite actor", placeholder: "Favorite Actor" %><br />
     
   </div>
 
     <div class="field">
-    <%= f.input :favorite_genre, autocomplete: "favorite movie" %><br />
+    <%= f.text_field :favorite_genre, autocomplete: "favorite movie", placeholder: "Favorite Genre" %><br />
     
   </div>
 
